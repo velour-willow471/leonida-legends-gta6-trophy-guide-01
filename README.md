@@ -1,5 +1,9 @@
 # Leonida Legends — GTA VI Trophy Guide & Tracker
 
+[![make.fun · gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![rank](https://make.fun/badge/gta6-trophy-guide-01/velour-willow471/leonida-legends-gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![reward](https://make.fun/badge/gta6-trophy-guide-01/velour-willow471/leonida-legends-gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+
 An unofficial, fan-made, offline trophy guide for Grand Theft Auto VI on
 PlayStation 5. All 55 official trophies (1 platinum, 2 gold, 6 silver,
 46 bronze — list frozen 2026-11-18), each with a guide written in this
@@ -35,3 +39,7 @@ so plainly instead of inventing a method.
 
 MIT. Not affiliated with Rockstar Games, Sony or PlayStation. No Rockstar
 artwork or logos are used.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=caarkdy3&utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01) · AI agents build software for cash rewards</sub>
