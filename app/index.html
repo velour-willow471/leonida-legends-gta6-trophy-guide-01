@@ -4,81 +4,151 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leonida Legends — GTA VI Trophy Guide &amp; Tracker</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff5da2'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%E2%98%85%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="masthead">
-  <div>
+  <div class="masthead-inner">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide &amp; tracker</p>
     <h1>Leonida Legends</h1>
-    <p class="tagline">The complete offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI — every official name, description and grade, a guide in our own words with its sources, and a roadmap to the platinum.</p>
-  </div>
-  <div class="progress-box" aria-live="polite">
-    <p id="progressText">0 of 55 earned</p>
-    <div class="progress-bar" role="progressbar" aria-label="Trophies earned" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0"><div id="progressFill"></div></div>
-    <p id="gradeCounts" class="grade-counts"></p>
+    <p class="lede">Every one of the 55 official trophies — what to do, where, and what can be missed — with a checklist that saves in your browser. No account, no network, no ads.</p>
+    <p class="list-makeup">Official list, frozen 2026-11-18: <strong>55 trophies</strong> — 1 platinum, 2 gold, 6 silver, 46 bronze &middot; 28 hidden on PSN &middot; 0 online trophies &middot; 1 playthrough is enough</p>
+    <div class="progress-wrap" aria-label="Progress">
+      <div class="progress-numbers"><span id="progress-text">0 of 55 earned</span><span id="progress-grades"></span></div>
+      <div class="progress-bar"><div id="progress-fill" style="width:0%"></div></div>
+    </div>
   </div>
 </header>
 
+<nav class="tabs" aria-label="Sections">
+  <button type="button" class="tab active" data-view="tracker">Tracker</button>
+  <button type="button" class="tab" data-view="roadmap">Roadmap to Platinum</button>
+  <button type="button" class="tab" data-view="sources">Sources &amp; honesty note</button>
+</nav>
+
 <main>
-<section id="roadmap" aria-labelledby="roadmapHeading">
-  <h2 id="roadmapHeading">Roadmap to the Platinum</h2>
-  <dl id="roadmapFacts" class="facts"></dl>
-  <ol id="roadmapStages" class="stages"></ol>
-  <p id="missableWarning" class="warning"><strong>Watch out for one trophy:</strong> Positive Mental Attitude (meditate at every spot) is the only trophy flagged as possibly missable — do the balcony meditation at Jason's house during Chapter 1, after the mission Down to Earth. Every other trophy can be earned after the story in free roam. Cheats disable trophies and saving, so leave them off for the whole run.</p>
-</section>
+  <section id="view-tracker" class="view">
+    <div class="controls">
+      <label class="control search">Search <input id="search" type="search" placeholder="Trophy name, mission, keyword…" autocomplete="off"></label>
+      <label class="control">Grade
+        <select id="grade">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label class="control">Kind
+        <select id="kind">
+          <option value="all">All kinds</option>
+          <option value="story">Story</option>
+          <option value="activity">Activities</option>
+          <option value="collectible">Collectibles</option>
+          <option value="robbery">Robberies</option>
+          <option value="misc">Miscellaneous</option>
+        </select>
+      </label>
+      <label class="control">Status
+        <select id="status">
+          <option value="all">Earned &amp; not earned</option>
+          <option value="earned">Earned only</option>
+          <option value="unearned">Not earned only</option>
+        </select>
+      </label>
+      <label class="control switch"><input id="spoilers" type="checkbox" checked> Hide story trophies until earned</label>
+      <span class="control buttons">
+        <button id="export" type="button">Export progress</button>
+        <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
+        <button id="reset" type="button">Reset</button>
+      </span>
+    </div>
+    <p id="count" class="count" aria-live="polite"></p>
+    <div id="cards" class="cards"></div>
+    <p class="footnote">Guides are written in this guide's own words from the public sources named under each trophy. Where players have not yet confirmed a method, the guide says so instead of guessing.</p>
+  </section>
 
-<section id="controls" aria-label="Tracker controls">
-  <div class="control-row">
-    <label class="search-label">Search <input id="search" type="search" placeholder="Trophy name, mission or keyword…" autocomplete="off"></label>
-    <label>Grade
-      <select id="gradeFilter">
-        <option value="all">All grades</option>
-        <option value="platinum">Platinum</option>
-        <option value="gold">Gold</option>
-        <option value="silver">Silver</option>
-        <option value="bronze">Bronze</option>
-      </select>
-    </label>
-    <label class="check-label"><input id="spoilerToggle" type="checkbox" checked> Hide story spoilers until earned</label>
-    <label class="check-label"><input id="hideEarnedToggle" type="checkbox"> Hide earned</label>
-  </div>
-  <div class="control-row" id="kindFilters" role="group" aria-label="Filter by kind">
-    <button type="button" data-kind="all" class="chip active">All 55</button>
-    <button type="button" data-kind="story" class="chip">Story</button>
-    <button type="button" data-kind="side" class="chip">Character quests</button>
-    <button type="button" data-kind="collectibles" class="chip">Collectibles</button>
-    <button type="button" data-kind="activities" class="chip">Activities</button>
-    <button type="button" data-kind="completion" class="chip">100% completion</button>
-    <button type="button" data-kind="missable" class="chip">Missable</button>
-    <button type="button" data-kind="online" class="chip">Online</button>
-  </div>
-  <div class="control-row">
-    <button id="exportBtn" type="button">Export progress</button>
-    <label class="import-label">Import progress <input id="importFile" type="file" accept="application/json,.json"></label>
-    <button id="resetBtn" type="button">Reset progress</button>
-    <span id="saveNote" class="save-note">Progress saves in this browser (localStorage). No account, no network.</span>
-  </div>
-</section>
+  <section id="view-roadmap" class="view" hidden>
+    <h2>Roadmap to the Platinum</h2>
+    <p class="roadmap-intro">Estimates from the published guides: difficulty about <strong>4/10</strong>, around <strong>200 hours</strong> (KeenGamer; Push Square says up to 300). One playthrough, no online trophies, free roam after the story. There is <strong>no mission replay</strong> and <strong>no New Game+</strong>, so keep manual saves — 15 slots — at the start and end of each chapter. Cheats disable trophies and saving while active.</p>
 
-<section id="detail" aria-labelledby="detailHeading" aria-live="polite">
-  <h2 id="detailHeading">Trophy guide</h2>
-  <div id="detailBody"><p class="empty-detail">Select a trophy below to read its full guide, with its sources and when it can be missed.</p></div>
-</section>
+    <ol class="steps">
+      <li>
+        <h3>Step 1 — Play the story, and do the one thing that can be missed (60–80 hours)</h3>
+        <p>Play through the four chapters with Jason and Lucia. Story trophies pop automatically; you don't need gold medals in story missions. While you play, scan new vehicles and study new animals with the WAiNK app and binoculars — you'll need 200 base-model vehicles and 100 animal species later, and collecting them naturally saves hours.</p>
+        <p><strong>The missable:</strong> after the Chapter 1 mission <em>Down to Earth</em>, find Lucia at Jason's house in the morning. When she mentions meditating, follow her to the balcony and accept. That balcony session may not count as a marked meditation spot later, so do it before leaving Chapter 1 and make a manual save. It is the only currently identified potentially missable trophy-related interaction, for <strong>Positive Mental Attitude</strong> (18 meditation spots). Whether the balcony session is strictly required is still unconfirmed — do it anyway.</p>
+        <p><strong>Character-only questlines:</strong> Andy's strand is Lucia-only; Tyrone's and Bret's are Jason-only. <strong>Irredeemable profile:</strong> some choices can't be undone — the PowerPyx roadmap flags it, so keep a save before big decisions. <strong>Hourglass quests</strong> expire, but they don't count toward trophies.</p>
+      </li>
+      <li>
+        <h3>Step 2 — Reach 100% completion (around 100 hours)</h3>
+        <p>After the story, open <strong>Progress &gt; Stats &gt; 100% Completion</strong> and work the checklist. You only need the numbers below — not everything in the game:</p>
+        <table class="checklist">
+          <thead><tr><th>Category</th><th>Needed for 100%</th></tr></thead>
+          <tbody>
+            <tr><td>Main story</td><td>All chapters finished</td></tr>
+            <tr><td>Optional tasks</td><td>100 completed</td></tr>
+            <tr><td>Gang operations</td><td>39 of 39</td></tr>
+            <tr><td>Bank jobs</td><td>22 of 22</td></tr>
+            <tr><td>Payday loan jobs</td><td>7 of 7</td></tr>
+            <tr><td>Smash 'n' grabs</td><td>34 of 35</td></tr>
+            <tr><td>Stick-ups</td><td>50 of 91</td></tr>
+            <tr><td>Bank vaults</td><td>8 of 8 (open via the optional mission <em>That's Where The Money Is…</em> in Chapter 4)</td></tr>
+            <tr><td>Fencing</td><td>$100,000 narcotics · $100,000 jewelry · $250,000 marked bills · $200,000 vehicles</td></tr>
+            <tr><td>Kenton's treasure sets</td><td>5 of 7</td></tr>
+            <tr><td>Collectible card sets</td><td>15 of 18</td></tr>
+            <tr><td>WAiNK locations</td><td>100 scans</td></tr>
+            <tr><td>Underwater discoveries</td><td>33 of 33</td></tr>
+            <tr><td>Magazines, books &amp; comics</td><td>30 of 34</td></tr>
+            <tr><td>Meditations</td><td>15 of 18 (all 18 for the separate trophy)</td></tr>
+            <tr><td>Cocaine flamingos</td><td>100 of 125</td></tr>
+            <tr><td>Unique playlists</td><td>2 of 2</td></tr>
+            <tr><td>Discovered styles</td><td>70 of 79</td></tr>
+            <tr><td>Base-model vehicles</td><td>200 of 277</td></tr>
+            <tr><td>Standard-issue weapons</td><td>50 of 66</td></tr>
+            <tr><td>Animals studied</td><td>100 of 255</td></tr>
+            <tr><td>Unique races won</td><td>30 of 40</td></tr>
+            <tr><td>Race challenge gold medals</td><td>10 of 13</td></tr>
+            <tr><td>Shooting range gold medals</td><td>42 of 42</td></tr>
+            <tr><td>Video games</td><td>Play all 4</td></tr>
+            <tr><td>Pool opponents beaten</td><td>5 of 7</td></tr>
+            <tr><td>Mini golf</td><td>Play at 2 of 3 courses</td></tr>
+            <tr><td>Basketball hoops</td><td>Score at 90 of 100</td></tr>
+            <tr><td>Drone time trials</td><td>42 of 42</td></tr>
+            <tr><td>Stunts</td><td>300 of 397</td></tr>
+            <tr><td>Challenges</td><td>70 of 80 (you can skip the 10 hardest)</td></tr>
+            <tr><td>Bret's target decks</td><td>15 of 15</td></tr>
+          </tbody>
+        </table>
+        <p>Don't chase a category past its number: 100% needs 300 stunts, not 397; 100 animals, not 255; 200 vehicles, not 277.</p>
+      </li>
+      <li>
+        <h3>Step 3 — Finish the stranger strands and the cleanup (10–20 hours)</h3>
+        <p>Once 100% is done, check the tracker for what's left: the five side-character finals (Andy, Kenton, Billy, Randy, Tyrone), eight Strangers &amp; Freaks strands, the remaining meditation spots, and the miscellaneous combat, driving, robbery and money trophies. Then <strong>Vice Got a Price!</strong> pops with the last one.</p>
+      </li>
+    </ol>
+    <p class="roadmap-source">Roadmap and 100% numbers: KeenGamer trophy guide, 2026-11-19. Time estimate: KeenGamer (~200 hours) and Push Square (up to 300 hours). Character-only questlines and the Irredeemable profile warning: PowerPyx roadmap, via GTASpotter.</p>
+  </section>
 
-<section id="list" aria-labelledby="listHeading">
-  <h2 id="listHeading">All 55 trophies</h2>
-  <p id="listCount" class="list-count"></p>
-  <div id="trophyCards" class="cards"></div>
-  <p id="emptyState" class="empty-state" hidden></p>
-</section>
+  <section id="view-sources" class="view" hidden>
+    <h2>Sources &amp; honesty note</h2>
+    <p>The game released on 2026-11-19, a day before this guide was written. The trophy names, descriptions and grades are the official PlayStation 5 list as published by the trackers (Exophase; PSNProfiles), frozen 2026-11-18. The unlock methods below are this guide's own words, drawn from the published guides named under each trophy:</p>
+    <ul class="source-list">
+      <li><strong>KeenGamer</strong> — GTA 6 Trophy Guide &amp; Platinum Roadmap, 2026-11-19: the full 55-trophy table, the 100% completion checklist numbers, and the Chapter 1 meditation warning.</li>
+      <li><strong>PowerPyx</strong> — GTA 6 Trophy Guide &amp; Roadmap: the nine activity types, the four stunt categories and their counts, the 12 shooting range locations, and the Irredeemable profile / character-only questline warnings.</li>
+      <li><strong>Push Square</strong> — GTA 6 Trophy Guide &amp; Roadmap: the story-first approach, the 100% checklist, and the up-to-300-hour estimate.</li>
+      <li><strong>GTABase</strong> — GTA 6 Achievements &amp; Trophies list: the nine activity types and the fishing, hunting and golf details.</li>
+      <li><strong>gta6collectiblesmap</strong> — GTA 6 Collectibles Map: the 480 cards in 18 sets, 125 cocaine flamingos, 33 underwater discoveries, and the activity counts.</li>
+      <li><strong>gta6database</strong> — GTA 6 Activities: robbery counts (39 gang operations, 22 bank jobs, 7 payday loan jobs, 35 smash 'n' grabs, 91 stick-ups) and gym workouts.</li>
+      <li><strong>Exophase / PSNProfiles</strong> — the official trophy list itself (names, descriptions, grades, hidden flags).</li>
+    </ul>
+    <p><strong>What is not yet confirmed:</strong> four trophies have no confirmed unlock method in any published guide as of 2026-11-20 — <em>In The Beginning…</em>, <em>Capital Offense</em>, <em>Bad Luck, I Guess</em> and <em>The Truth Is Out There</em> (and <em>Ten Pin</em>'s precise method is still being confirmed). Their entries say so plainly instead of inventing a method. If you are reading this later, check the sources above for updates before trusting those five.</p>
+    <p><strong>How this guide is built:</strong> a static page that works offline from its own files. Your checklist lives only in your browser (localStorage), and Export/Import moves it as a file you control. Nothing is sent anywhere. This guide uses no Rockstar artwork or logos.</p>
+  </section>
 </main>
 
 <footer>
-  <h2>Sources</h2>
-  <p>Official names, descriptions and grades are PlayStation's, as listed by Exophase and PSNProfiles. Every guide above is written in our own words for this entry and names the published guide its facts come from:</p>
-  <ul id="sourceList" class="sources"></ul>
-  <p class="fine-print">Grand Theft Auto VI launched on 19 November 2026. Where a detail is still unconfirmed one day after launch, the guide says so instead of inventing it — see Bad Luck, I Guess. This guide is an unofficial fan work, made without Rockstar Games artwork or logos, and it works fully offline: it fetches nothing at run time except its own data file.</p>
+  <p>Leonida Legends — an unofficial, fan-made trophy guide for Grand Theft Auto VI. Not affiliated with Rockstar Games, Sony or PlayStation. Trophy names and descriptions are the official list; all guide text is this guide's own words. MIT licensed.</p>
 </footer>
 <script type="module" src="app.js"></script>
 </body>
