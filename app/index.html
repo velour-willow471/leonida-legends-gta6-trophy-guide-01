@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Legends — GTA VI Trophy Guide &amp; Tracker</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff5da2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div>
+    <h1>Leonida Legends</h1>
+    <p class="tagline">The complete offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI — every official name, description and grade, a guide in our own words with its sources, and a roadmap to the platinum.</p>
+  </div>
+  <div class="progress-box" aria-live="polite">
+    <p id="progressText">0 of 55 earned</p>
+    <div class="progress-bar" role="progressbar" aria-label="Trophies earned" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0"><div id="progressFill"></div></div>
+    <p id="gradeCounts" class="grade-counts"></p>
+  </div>
+</header>
+
+<main>
+<section id="roadmap" aria-labelledby="roadmapHeading">
+  <h2 id="roadmapHeading">Roadmap to the Platinum</h2>
+  <dl id="roadmapFacts" class="facts"></dl>
+  <ol id="roadmapStages" class="stages"></ol>
+  <p id="missableWarning" class="warning"><strong>Watch out for one trophy:</strong> Positive Mental Attitude (meditate at every spot) is the only trophy flagged as possibly missable — do the balcony meditation at Jason's house during Chapter 1, after the mission Down to Earth. Every other trophy can be earned after the story in free roam. Cheats disable trophies and saving, so leave them off for the whole run.</p>
+</section>
+
+<section id="controls" aria-label="Tracker controls">
+  <div class="control-row">
+    <label class="search-label">Search <input id="search" type="search" placeholder="Trophy name, mission or keyword…" autocomplete="off"></label>
+    <label>Grade
+      <select id="gradeFilter">
+        <option value="all">All grades</option>
+        <option value="platinum">Platinum</option>
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+        <option value="bronze">Bronze</option>
+      </select>
+    </label>
+    <label class="check-label"><input id="spoilerToggle" type="checkbox" checked> Hide story spoilers until earned</label>
+    <label class="check-label"><input id="hideEarnedToggle" type="checkbox"> Hide earned</label>
+  </div>
+  <div class="control-row" id="kindFilters" role="group" aria-label="Filter by kind">
+    <button type="button" data-kind="all" class="chip active">All 55</button>
+    <button type="button" data-kind="story" class="chip">Story</button>
+    <button type="button" data-kind="side" class="chip">Character quests</button>
+    <button type="button" data-kind="collectibles" class="chip">Collectibles</button>
+    <button type="button" data-kind="activities" class="chip">Activities</button>
+    <button type="button" data-kind="completion" class="chip">100% completion</button>
+    <button type="button" data-kind="missable" class="chip">Missable</button>
+    <button type="button" data-kind="online" class="chip">Online</button>
+  </div>
+  <div class="control-row">
+    <button id="exportBtn" type="button">Export progress</button>
+    <label class="import-label">Import progress <input id="importFile" type="file" accept="application/json,.json"></label>
+    <button id="resetBtn" type="button">Reset progress</button>
+    <span id="saveNote" class="save-note">Progress saves in this browser (localStorage). No account, no network.</span>
+  </div>
+</section>
+
+<section id="detail" aria-labelledby="detailHeading" aria-live="polite">
+  <h2 id="detailHeading">Trophy guide</h2>
+  <div id="detailBody"><p class="empty-detail">Select a trophy below to read its full guide, with its sources and when it can be missed.</p></div>
+</section>
+
+<section id="list" aria-labelledby="listHeading">
+  <h2 id="listHeading">All 55 trophies</h2>
+  <p id="listCount" class="list-count"></p>
+  <div id="trophyCards" class="cards"></div>
+  <p id="emptyState" class="empty-state" hidden></p>
+</section>
+</main>
+
+<footer>
+  <h2>Sources</h2>
+  <p>Official names, descriptions and grades are PlayStation's, as listed by Exophase and PSNProfiles. Every guide above is written in our own words for this entry and names the published guide its facts come from:</p>
+  <ul id="sourceList" class="sources"></ul>
+  <p class="fine-print">Grand Theft Auto VI launched on 19 November 2026. Where a detail is still unconfirmed one day after launch, the guide says so instead of inventing it — see Bad Luck, I Guess. This guide is an unofficial fan work, made without Rockstar Games artwork or logos, and it works fully offline: it fetches nothing at run time except its own data file.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
