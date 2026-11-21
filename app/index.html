@@ -3,70 +3,100 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leonida Legends — GTA VI Trophy Guide &amp; Tracker</title>
+<title>Leonida Legends — GTA VI Trophy Guide and Tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="hero">
-  <div>
+<header class="site-header">
+  <div class="header-text">
     <h1>Leonida Legends</h1>
-    <p class="sub">Grand Theft Auto VI (PS5) — trophy guide &amp; tracker for all 55 trophies. Works fully offline; your ticks stay in this browser.</p>
+    <p class="tagline">Grand Theft Auto VI (PS5) — trophy guide and tracker for all 55 trophies. Works fully offline.</p>
   </div>
-  <div class="progress-box">
+  <div class="header-progress">
     <p id="progress">0 of 55 earned</p>
-    <div class="bar"><div id="barfill"></div></div>
-    <p id="percent">0%</p>
+    <div class="bar" role="progressbar" aria-label="Trophy progress">
+      <div id="bar-fill"></div>
+    </div>
+    <p id="percent">0% to the platinum</p>
   </div>
 </header>
-<nav class="topnav"><a href="#roadmap">Roadmap to the Platinum</a> · <a href="#list">Trophy List</a></nav>
-<section class="controls" aria-label="Filters">
-  <label>Search <input id="q" type="search" placeholder="Search name, description or guide…"></label>
-  <label>Grade <select id="grade"><option value="all">All grades</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <label>Kind <select id="kind"><option value="all">All kinds</option><option value="story">Story</option><option value="completion">Completion</option><option value="collectible">Collectible</option><option value="activity">Activity</option><option value="misc">Misc</option></select></label>
-  <label>Status <select id="status"><option value="all">All</option><option value="earned">Earned</option><option value="unearned">Not yet earned</option></select></label>
-  <label class="check"><input id="spoilers" type="checkbox"> Spoiler protection</label>
+<nav class="top-nav">
+  <a href="#trophies">Trophy list</a>
+  <a href="#roadmap">Roadmap</a>
+  <a href="#checklist-summary">100% checklist summary</a>
+</nav>
+<section class="controls" aria-label="Filters and progress tools">
+  <label>Search
+    <input id="search" type="search" placeholder="Search name, description or guide">
+  </label>
+  <label>Grade
+    <select id="grade">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label>Kind
+    <select id="kind">
+      <option value="all">All kinds</option>
+      <option value="story">Story</option>
+      <option value="collectible">Collectible</option>
+      <option value="completion">Completion</option>
+      <option value="activity">Activity</option>
+      <option value="misc">Misc</option>
+    </select>
+  </label>
+  <label>Status
+    <select id="status">
+      <option value="all">All</option>
+      <option value="earned">Earned</option>
+      <option value="unearned">Not earned yet</option>
+    </select>
+  </label>
+  <label class="check-label">
+    <input id="spoilers" type="checkbox"> Show spoilers (reveal all guides)
+  </label>
   <button id="export" type="button">Export progress</button>
-  <label class="import-btn">Import progress <input id="import" type="file" accept="application/json,.json"></label>
-  <button id="reset" type="button">Clear filters</button>
+  <label class="import-label">Import progress
+    <input id="import" type="file" accept="application/json">
+  </label>
 </section>
-<p id="showing"></p>
-<main id="list"></main>
-<section id="roadmap">
-  <h2>Roadmap to the Platinum</h2>
-  <p>Built only from what the 55 trophy descriptions confirm. Follow the phases in order and you will never need a second full playthrough for the story content.</p>
-  <h3>Phase 1 — Play the story first</h3>
-  <ol>
-    <li>Start with <strong>Just Like Paradise</strong> (Gone Fishing), then clear Chapters 1–4 for <strong>Paradise Lost</strong>, <strong>T**s Ass Drug Money</strong>, <strong>Vice City, Baby!</strong> and <strong>Top Of The World, Ma</strong>.</li>
-    <li>Finish the named missions as they appear: <strong>Trust</strong> (Breakfast Run), <strong>Break the Bank</strong> (The Cartel Heist), <strong>Family Matters</strong> (Child's Play), <strong>DWNFALL</strong> (Headliners), <strong>Hi-Jacked</strong> (VCIA Takedown) and <strong>Snow Storm</strong> (Operation Savage Glory).</li>
-    <li>Complete the finale for <strong>You Gotta Know When to Get Off</strong>. Keep a manual save before the final mission — ending details are not confirmed by the descriptions.</li>
-    <li>Along the way, finish every character strand finale: Andy, Kenton, Billy, Randy and Tyrone, plus <strong>Strangers &amp; Freaks</strong> (8 stranger strands).</li>
-  </ol>
-  <h3>Phase 2 — Completion and collectibles</h3>
-  <ol>
-    <li>Push toward <strong>A Long Road</strong> (100% Completion) using the in-game tracker as your checklist of what remains.</li>
-    <li>Collectibles: <strong>Don't Touch My Deck</strong> (3 card sets), <strong>You WAiNKer!</strong> (100 locations), <strong>Positive Mental Attitude</strong> (every meditation spot), <strong>Whip It Good</strong> (100 vehicles) and <strong>On the Spot</strong> (10 Scooter Bros registrations).</li>
-    <li>Activities: <strong>Cunning Stunts</strong> (250 stunts), <strong>The Shootist</strong> (gold in all Shooting Range challenges), <strong>Top Fun</strong> (drone race win everywhere), <strong>Earn Cash, Not Kudos</strong> (20 different race wins) and <strong>Master of None</strong> (try every activity type once).</li>
-    <li>Money and property: <strong>Dime on the Dollar</strong> ($250,000 laundered), <strong>Treat Yo Self</strong> ($100,000 spent) and <strong>Little Boxes</strong> (all garages).</li>
-    <li>Explore everything for <strong>The Goodtime State</strong>, and rob for <strong>Maximum Withdrawal</strong>, <strong>A Classic Blitz Play</strong> and <strong>Pest Control</strong>.</li>
-  </ol>
-  <h3>Phase 3 — Cleanup of one-off moments</h3>
-  <ol>
-    <li>Deliberately set up the partner sequences: <strong>Hot Together</strong> and <strong>Retail Therapy</strong> — both need one continuous sequence, so plan the route first. ⚠ Missable-style: a broken sequence means a fresh attempt.</li>
-    <li>Do the stealth and set-piece trophies with a save ready: <strong>Sneakthief</strong>, <strong>Catch Me If You Can</strong>, <strong>Capital Offense</strong> and <strong>In The Beginning…</strong>. ⚠ Treat these as one-chance until you confirm they can be repeated.</li>
-    <li>Honest unknowns: <strong>Challenging Tank</strong>, <strong>Personal Best</strong>, <strong>Actions Speak Louder</strong>, <strong>Bad Luck, I Guess</strong> and <strong>The Truth Is Out There</strong> have vague descriptions — the guides in the list say plainly what is and is not confirmed instead of inventing steps.</li>
-    <li>When the counter reaches 54 of 55, <strong>Vice Got a Price!</strong> — the platinum — is yours.</li>
-  </ol>
-  <h3>100% completion checklist summary</h3>
-  <ul>
-    <li>☐ Story: all chapters, all named missions, the final mission</li>
-    <li>☐ Strands: Andy, Kenton, Billy, Randy, Tyrone + 8 stranger strands</li>
-    <li>☐ Collectibles &amp; exploration: cards, WAiNK locations, meditation spots, vehicles, full map</li>
-    <li>☐ Activities: stunts, shooting range golds, drone races, races, fishing, arcade, bowling</li>
-    <li>☐ Money &amp; property: laundering, shop spend, all garages, Scooter Bros registrations</li>
-    <li>☐ One-off moments cleaned up, then the platinum</li>
-  </ul>
-</section>
-<footer><p>Leonida Legends — an unofficial fan guide. Trophy names, descriptions and grades follow the official PS5 list. See each trophy's sources line.</p></footer>
-<script src="app.js"></script>
+<p id="showing">Showing 55 trophies</p>
+<main>
+  <section id="trophies">
+    <h2>Trophy list</h2>
+    <div id="cards"></div>
+  </section>
+  <section id="roadmap">
+    <h2>Roadmap to the Platinum</h2>
+    <p>There are 55 trophies in total: 1 platinum, 2 gold, 6 silver and 46 bronze. No trophy in the official list requires online play, so the whole platinum can be planned as a single-player route. The order below keeps backtracking low and puts the one choice-sensitive trophy in view early.</p>
+    <h3>Stage 1 — Story first</h3>
+    <p>Play the main story from Gone Fishing through the chapters to the final mission. This clears the chapter trophies, the named mission trophies such as Breakfast Run, The Cartel Heist, Child's Play, Headliners, VCIA Takedown and Operation Savage Glory, and opens up the whole state of Leonida for everything else. Finish character strands as they appear — Andy, Kenton, Billy, Randy and Tyrone each end with a final-mission trophy, and eight stranger strands complete the silver Strangers and Freaks trophy.</p>
+    <h3>Stage 2 — Completion and collectibles</h3>
+    <p>With the map open, work on the 100% completion gold. Sweep exploration area by area for The Goodtime State, meditate at every spot, finish three collectible card sets, discover vehicles as you travel, and use the WAiNK action at new locations instead of repeating old ones. Mix in the volume work here: 250 stunts, 50 challenges, and sampling every activity type once.</p>
+    <h3>Stage 3 — Activities and skill</h3>
+    <p>Clear the activity block: gold medals in all shooting range challenges, a drone race win at every Top Fun location, 20 different race wins, beating Cal in a fishing challenge, and completing one arcade game. These are repeatable, so failed attempts cost only time.</p>
+    <h3>Stage 4 — Cleanup of one-off actions</h3>
+    <p>Finish the situational trophies in free roam: partner wanted-level escapes, shop and vault robberies, the undetected jewelry store robbery, an armored truck robbery, one illegal operation per gang, the money totals for laundering and shop spending, all garage purchases, and ten Scooter Bros registrations. End with the platinum itself, Vice Got a Price!, which unlocks once the other 54 are done.</p>
+    <h3>Missable warnings</h3>
+    <p>Only one trophy in this guide is flagged missable: Actions Speak Louder, because it tracks choices and story choices are often one-time decisions. Keep rotating manual saves before major decisions so a different path can be revisited. For every other trophy, the official description reads as repeatable or cumulative, but a save before the final mission is still cheap insurance. Vague trophies such as Challenging Tank, Personal Best and The Truth Is Out There have honestly uncertain methods — their cards say so plainly rather than inventing steps.</p>
+    <h3 id="checklist-summary">100% checklist summary</h3>
+    <ul>
+      <li>Story: all chapters, the final mission, and every named mission trophy.</li>
+      <li>Strands: final missions for Andy, Kenton, Billy, Randy and Tyrone, plus 8 stranger strands in total.</li>
+      <li>Exploration: all areas of Leonida explored and every meditation spot used.</li>
+      <li>Collectibles and discovery: 3 card sets complete and 100 vehicles discovered.</li>
+      <li>Activities: every activity type tried, 250 stunts, 50 challenges, shooting range golds, drone race wins everywhere, 20 race wins.</li>
+      <li>Money and property: laundering total, shop spending total, and all garage properties bought.</li>
+      <li>Cleanup: partner, robbery, stealth and one-off action trophies, then the platinum.</li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <p>Leonida Legends is an unofficial fan guide. Trophy names and descriptions are from the official PS5 trophy list via Exophase and PSNProfiles. Progress is stored only in your browser on this device, and the guide loads nothing from the network.</p>
+</footer>
+<script type="module" src="app.js"></script>
 </body>
 </html>

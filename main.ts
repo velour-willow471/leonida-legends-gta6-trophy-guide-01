@@ -1,16 +1,14 @@
-// Leonida Legends — hand-in program for the gta6-trophy-guide-01 bounty.
-//
-// What lives here: the guide itself is the static site under app/ (open
-// app/index.html in any browser; it needs no build and no network). This
-// file only packages that site for judging: it mirrors app/ and
-// screenshots/ into the output folder and then asks the vendored make.fun
-// library to summarise the result as dossier.json. The vendored file must
-// stay untouched, because the scorer compares the dossier against what its
-// own copy of the library would produce.
-//
-// Local run:
+// Leonida Legends — packaging step for the make.fun entry.
+// The guide itself is the static app/ folder next to this file: plain HTML,
+// CSS and JavaScript plus the trophy data file, with no build step and no
+// network loading, so a browser can open app/index.html directly.
+// This program prepares the hand-in: it copies app/ and screenshots/ into
+// the output folder and writes dossier.json there using the vendored
+// make.fun library. The vendor file must stay untouched, because the
+// scorer expects dossier.json to match exactly what its own copy writes.
+// Run it locally with an explicit output folder:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
-// Preview the site itself with: node serve.ts
+// Preview the guide first with: node serve.ts
 
 import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -25,9 +23,9 @@ cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
 mkdirSync(join(out, 'screenshots'), { recursive: true });
 if (existsSync(join(here, 'screenshots'))) cpSync(join(here, 'screenshots'), join(out, 'screenshots'), { recursive: true });
 
-// Entry limits mirrored from the scorer: at most 4 screenshots of at most
-// 256 KiB each, at most 993 entries / 48 MiB under app/, and a text budget
-// of 163840 bytes for the dossier body.
+// Caps mirror the scorer's gate: text is shaped by text_max_bytes, and the
+// other limits refuse an entry the scorer would refuse anyway — at most 4
+// screenshots and none over 256 KiB, plus the app file count and size caps.
 writeFileSync(
   join(out, 'dossier.json'),
   buildDossier(out, { text_max_bytes: 163840, screenshots: { max: 4, max_bytes: 262144 }, app_max_files: 993, app_max_bytes: 50331648 }),

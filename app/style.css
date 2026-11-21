@@ -1,38 +1,261 @@
-:root{--bg:#0f1226;--panel:#1b1f3a;--card:#ffffff;--ink:#1c1e2e;--muted:#5b5f7a;--pink:#ff5da2;--cyan:#22c3d6;--gold:#c9a227;--silver:#8a93a6;--bronze:#b0793f;--plat:#7fd4c1}
-*{box-sizing:border-box}
-body{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;margin:0;background:#f3f1fb;color:var(--ink)}
-.hero{background:linear-gradient(120deg,#141736,#3b1d5e 55%,#0e5a68);color:#fff;padding:28px 24px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.hero h1{margin:0;font-size:40px;letter-spacing:.5px}
-.sub{max-width:640px;color:#e6e2ff;line-height:1.5}
-.progress-box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:14px 18px;min-width:230px}
-.progress-box p{margin:4px 0;font-weight:700}
-.bar{height:14px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden}
-#barfill{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--cyan));transition:width .3s}
-.topnav{padding:10px 24px;background:#fff;border-bottom:1px solid #ddd6f3}
-.topnav a{color:#5b2ea6;font-weight:700}
-.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end;padding:16px 24px;background:#fff;border-bottom:1px solid #e3def5;position:sticky;top:0;z-index:5}
-.controls label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;color:var(--muted)}
-.controls label.check{flex-direction:row;align-items:center;color:var(--ink)}
-.controls input[type=search],.controls select{padding:8px 10px;border:1px solid #c9c3e6;border-radius:8px;font-size:14px;min-width:150px}
-button,.import-btn{background:#241b4d;color:#fff;border:0;border-radius:8px;padding:9px 14px;font-size:14px;cursor:pointer;display:inline-block}
-.import-btn input{display:none}
-button:hover,.import-btn:hover{background:#3b2a7a}
-#showing{padding:10px 24px 0;color:var(--muted);font-size:14px}
-#list{padding:12px 24px 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(520px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid #e0dbf2;border-radius:14px;padding:16px 18px;box-shadow:0 2px 8px rgba(30,20,80,.06)}
-.card.done{border-color:#57b894;background:#f2fbf6}
-.card-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.card-head h3{margin:0;font-size:19px}
-.card-head input{width:20px;height:20px;accent-color:#2e9e77}
-.badge{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;padding:3px 8px;border-radius:99px;background:#eee;color:#333}
-.grade-platinum{background:var(--plat)} .grade-gold{background:#ffe58a;color:#6b5200} .grade-silver{background:#e3e8f2;color:#43506b} .grade-bronze{background:#f3d3b3;color:#6e3f14}
-.kind{background:#e8e2ff;color:#4a2d8f} .missable{background:#ffd9d9;color:#8a1616}
-.desc{font-style:italic;color:#333;margin:10px 0 6px}
-.guide{line-height:1.55;margin:6px 0}
-.sources{font-size:12px;color:var(--muted);margin:6px 0 0}
-.spoiler{display:flex;align-items:center;gap:12px;min-height:90px}
-.spoiler-note{font-weight:700;color:#6b4fa1}
-#roadmap{margin:8px 24px 24px;background:#fff;border:1px solid #e0dbf2;border-radius:14px;padding:22px 26px;line-height:1.6}
-#roadmap h2{margin-top:0;color:#241b4d} #roadmap h3{color:#5b2ea6}
-footer{padding:18px 24px;color:var(--muted);font-size:13px}
-@media(max-width:700px){#list{grid-template-columns:1fr}.hero h1{font-size:30px}}
+:root {
+  --bg: #10131c;
+  --panel: #1a1f2e;
+  --panel-soft: #232a3f;
+  --text: #f2f0e9;
+  --muted: #b9bdd0;
+  --accent: #ff5c8a;
+  --accent-2: #ffb347;
+  --line: #343c56;
+  --good: #57d38c;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 28px 32px 18px;
+  background: linear-gradient(135deg, #2a1535 0%, #10131c 55%, #0d2b33 100%);
+  border-bottom: 3px solid var(--accent);
+}
+.site-header h1 {
+  margin: 0;
+  font-size: 40px;
+  letter-spacing: 0.5px;
+  color: var(--accent-2);
+}
+.tagline {
+  margin: 6px 0 0;
+  color: var(--muted);
+  max-width: 560px;
+}
+.header-progress {
+  min-width: 240px;
+}
+#progress {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+#percent {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+.bar {
+  margin-top: 8px;
+  height: 14px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+#bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.25s ease;
+}
+.top-nav {
+  display: flex;
+  gap: 18px;
+  padding: 10px 32px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.top-nav a {
+  color: var(--accent-2);
+  text-decoration: none;
+  font-weight: 600;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: end;
+  padding: 16px 32px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.controls input[type="search"],
+.controls select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+  color: var(--text);
+  font-size: 14px;
+}
+.controls button {
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.check-label {
+  flex-direction: row !important;
+  align-items: center;
+  color: var(--text) !important;
+  font-size: 14px !important;
+  padding-bottom: 8px;
+}
+.import-label {
+  font-size: 14px !important;
+  color: var(--text) !important;
+  padding-bottom: 6px;
+}
+#showing {
+  padding: 10px 32px 0;
+  color: var(--muted);
+  margin: 0;
+}
+main {
+  padding: 8px 32px 24px;
+  max-width: 1100px;
+}
+#roadmap {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 16px 0 24px;
+}
+#roadmap h2,
+#trophies h2 {
+  color: var(--accent-2);
+  margin-top: 0;
+}
+#roadmap h3 {
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+#roadmap p {
+  margin-top: 4px;
+}
+#cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+}
+.earned-card {
+  border-color: var(--good);
+}
+.card-top {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.card-top input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  accent-color: var(--good);
+}
+.card-top h3 {
+  margin: 0;
+  font-size: 19px;
+}
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--panel-soft);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.grade-platinum {
+  background: #dfe9ff;
+  color: #1c2b4a;
+}
+.grade-gold {
+  background: #ffd94d;
+  color: #4a3800;
+}
+.grade-silver {
+  background: #cfd4dc;
+  color: #2c313a;
+}
+.grade-bronze {
+  background: #d99a5b;
+  color: #3d2200;
+}
+.missable-badge {
+  background: #ff5c5c;
+  color: #ffffff;
+  border-color: #ff5c5c;
+}
+.description {
+  font-style: italic;
+  color: var(--muted);
+  margin: 6px 0;
+}
+.guide {
+  margin: 8px 0;
+}
+.reveal {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--accent-2);
+  background: transparent;
+  color: var(--accent-2);
+  cursor: pointer;
+  font-weight: 600;
+}
+.sources {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+footer {
+  padding: 18px 32px 28px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+@media (max-width: 640px) {
+  .site-header,
+  .controls,
+  main,
+  footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .site-header h1 {
+    font-size: 30px;
+  }
+}
